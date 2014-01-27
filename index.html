@@ -7,8 +7,6 @@
 		<meta name="robots" content="index,follow" />
 		<meta name="googlebot" content="index,follow" />
 		<meta name="copyright" content="? 2014 daivalaravuru.com India. All Rights Reserved." />
-		<meta name="language" content="te-in" />
-		<meta name="revisit-after" content="2 days" />
 		<meta name="author" content="Mahesh Babu Bokkisam" />
 		<meta name="owner" content="maheshbabu.bokkisam@gmail.com" />
 		<meta name="rating" content="General" />
@@ -16,9 +14,8 @@
 		<meta name="geo.region" content="IN" />
 		<meta name="geo.placename" content="15.711443,80.054648" />
 		<meta name="audience" content="All" />
-		<meta name="page-type" content="html page and it is the sub page of Daivalaravuru website" />
-		<meta name="page-topic" content="this is about destination range alarm" />
-		<meta name="MSSmartTagsPreventParsing" content="TRUE" />	
+		<meta name="page-type" content="android app" />
+		<meta name="page-topic" content="this is about destination range alarm" />		
 		<meta name="keywords" content="Mobile Map Destination reach alarm" />
 		<meta name="keyphrase" content="Mobile Map Destination reach alarm" />
 		<meta name="abstract" content="Mobile Map Destination reach alarm" />
@@ -49,7 +46,7 @@
 			input.rounded:focus, input:focus { border-color: #339933;}
 			
 			button.btnGo{width:100%; color: #fff; background-color: #5bc0de;border-color: #46b8da;display: inline-block;margin-bottom: 0;font-weight: 400;text-align: center;vertical-align: middle;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;padding: 6px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;}
-			#map{width: 100%;height: 400px; border-radius: 8px;-moz-border-radius: 8px;-webkit-border-radius: 8px;-khtml-border-radius: 8px;}
+			#map{width: 100%;height: 150px; border-radius: 8px;-moz-border-radius: 8px;-webkit-border-radius: 8px;-khtml-border-radius: 8px;}
 			
 			button.navbar-toggle{cursor:pointer; background-color: #46b8da;border-color: #46b8da;float: right;padding: 2px 5px 5px 5px;border-radius: 4px;}
 			button.navbar-toggle .icon-bar {background-color: #fff;display: block;width: 22px;height: 2px;border-radius: 1px; font: -webkit-small-control; margin: 4px 0px 0px 0px;}
@@ -59,7 +56,7 @@
 	
 	<body>
 		<div id="mainwave">
-			<section class="formsec">
+			<div class="formsec">
 				<header>
 					<button id="setIcon" type="button" class="navbar-toggle">
 						<span class="icon-bar"></span>
@@ -80,43 +77,15 @@
 				</header>
 				
 				<ul id="settings" style="display:none;">
-					<li>
-						<label>Target Location</label>
-						<input class="rounded" type="text" name="targetPos" id="targetPos" value="" placeholder="Target Location" />
-						<input type="hidden" name="targetPosLat" id="targetPosLat" value="" />
-						<input type="hidden" name="targetPosLng" id="targetPosLng" value="" />
-					</li>
-					
-					<li>
-						<label>Set Range for alarm</label>
-						<select class="rounded" id="radiousrange">
-							<option value="1">1km</option>
-							<option value="2">2km</option>
-							<option value="5">3km</option>
-							<option value="10">10km</option>
-							<option value="15">15km</option>
-							<option value="20">20km</option>
-							<option value="25">25km</option>
-							<option value="30">30km</option>
-							<option value="35">35km</option>
-							<option value="40">40km</option>
-							<option value="45">45km</option>
-							<option value="50">50km</option>
-						</select>
-					</li>
-					
-					<li>
-						<label style="width:auto;">Total distance: </label>
-						<span id="totlDist">0km</span>
-					</li>
-					
-					<li>
-						<button id="btnGo" class="btnGo">Set Alarm</button>
-					</li>
-			</section>
-			<section class="mapsec">
+					<li><label>Target Location</label><input class="rounded" type="text" name="targetPos" id="targetPos" value="" placeholder="Target Location" /><input type="hidden" name="targetPosLat" id="targetPosLat" value="" /><input type="hidden" name="targetPosLng" id="targetPosLng" value="" /></li>					
+					<li><label>Set Range for alarm</label><select class="rounded" id="radiousrange"><option value="1">1km</option><option value="2">2km</option><option value="5">3km</option><option value="10">10km</option><option value="15">15km</option><option value="20">20km</option><option value="25">25km</option><option value="30">30km</option><option value="35">35km</option><option value="40">40km</option><option value="45">45km</option><option value="50">50km</option></select></li>
+					<li><label style="width:auto;">Total distance: </label><span id="totlDist">0km</span></li>					
+					<li><button id="btnGo" class="btnGo">Set Alarm</button></li>
+				</ul>	
+			</div>
+			<div class="mapsec">
 				<div id="map"></div>
-			</section>
+			</div>
 		</div>	
 		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script>	
