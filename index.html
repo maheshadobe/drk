@@ -55,26 +55,26 @@
 	</head>
 	
 	<body>
-		<div id="mainwave">
+		<div id="mainwave">			
 			<div class="formsec">
 				<header>
-					<button id="setIcon" type="button" class="navbar-toggle">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					
+					<button id="setIcon" type="button" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>					
 					<strong>Destination Range Alarm</strong>
-					<ul>
-						<li>					
-							<label>Current Location</label>
-							<span id="currentPos"></span>
-							<input type="hidden" name="currentPosLat" id="currentPosLat" value="" />		
-							<input type="hidden" name="currentPosLng" id="currentPosLng" value="" />
-							<button class="btnGo" id="stopVbrBtn">Stop Vibrating!</button>
-						</li>
-					</ul>
 				</header>
+			</div>
+			
+			<div class="mapsec" style=""><div id="map"></div></div>
+			
+			<div class="formsec">
+				<ul>
+					<li>
+						<label>Current Location</label>
+						<span id="currentPos"></span>
+						<input type="hidden" name="currentPosLat" id="currentPosLat" value="" />		
+						<input type="hidden" name="currentPosLng" id="currentPosLng" value="" />
+						<button class="btnGo" id="stopVbrBtn">Stop Vibrating!</button>
+					</li>
+				</ul>
 				
 				<ul id="settings" style="display:none;">
 					<li><label>Target Location</label><input class="rounded" type="text" name="targetPos" id="targetPos" value="" placeholder="Target Location" /><input type="hidden" name="targetPosLat" id="targetPosLat" value="" /><input type="hidden" name="targetPosLng" id="targetPosLng" value="" /></li>					
@@ -82,10 +82,7 @@
 					<li><label style="width:auto;">Total distance: </label><span id="totlDist">0km</span></li>					
 					<li><button id="btnGo" class="btnGo">Set Alarm</button></li>
 				</ul>	
-			</div>
-			<div class="mapsec">
-				<div id="map"></div>
-			</div>
+			</div>			
 		</div>	
 		
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script>	
@@ -190,11 +187,13 @@
 							alert("navigator.webkitVibrate?  " + (navigator.webkitVibrate ? "Yes" : "No"));
 							alert("navigator.oVibrate?  " + (navigator.oVibrate ? "Yes" : "No"));
 							*/
-							if ("vibrate" in navigator) {
+							
+							navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;							
+							if ("vibrate" in navigator) {							
 								function startVibrate(level) {
 									navigator.vibrate(level); 
 									if (window.HTMLAudioElement) {
-										snd = new Audio('');snd = new Audio('ring.mp3');snd.play();
+										snd = new Audio('');snd = new Audio('ring.ogg');snd.play();
 									}									
 								}
 								
