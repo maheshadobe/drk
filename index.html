@@ -52,6 +52,40 @@
 			button.navbar-toggle .icon-bar {background-color: #fff;display: block;width: 22px;height: 2px;border-radius: 1px; font: -webkit-small-control; margin: 4px 0px 0px 0px;}
 			#stopVbrBtn{display:none;}
 		</style>
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript">
+			// Wait for device API libraries to load
+			//
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			//
+			function onDeviceReady() {
+				// Empty
+			}
+
+			// Show a custom alert
+			//
+			function showAlert() {
+				navigator.notification.alert(
+					'You are the winner!',  // message
+					'Game Over',            // title
+					'Done'                  // buttonName
+				);
+			}
+
+			// Beep three times
+			//
+			function playBeep() {
+				navigator.notification.beep(3);
+			}
+
+			// Vibrate for 2 seconds
+			//
+			function vibrate() {
+				navigator.notification.vibrate(2000);
+			}
+		</script>	
 	</head>
 	
 	<body>
@@ -81,11 +115,15 @@
 					<li><label>Set Range for alarm</label><select class="rounded" id="radiousrange"><option value="1">1km</option><option value="2">2km</option><option value="5">3km</option><option value="10">10km</option><option value="15">15km</option><option value="20">20km</option><option value="25">25km</option><option value="30">30km</option><option value="35">35km</option><option value="40">40km</option><option value="45">45km</option><option value="50">50km</option></select></li>
 					<li><label style="width:auto;">Total distance: </label><span id="totlDist">0km</span></li>					
 					<li><button id="btnGo" class="btnGo">Set Alarm</button></li>
-				</ul>	
+				</ul>
+
+				<p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+				<p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
+				<p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
 			</div>			
 		</div>	
 		
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script>	
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,geometry"></script>		
 		<script type="text/javascript">
 			function initialize() {
 				var alaramHandle, mapCenter, map, currLat, currLng, marker, i, pos1, pos2, completed = 1, vibrateInterval, snd;
